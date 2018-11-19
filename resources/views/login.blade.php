@@ -32,17 +32,14 @@
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <br/>
-      <button type="button" class="btn btn-lg btn-block btn-info">
-        <img src="pic/login/facebook.png" width="10%" class="img-thumdnail" alt="Image">
-        Sign in with Facebook
-      </button>
-      <br/>
-      <div class="g-signin2" data-width="300" data-height="50" data-longtitle="true">
+      <div class="g-signin2" data-width="300" data-height="50" data-longtitle="true"></div>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
   </body>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  <script src="js/login/google-login/google-data.js"></script>
+  <p id="userinfo">test</p>
   <script scr="js/login/google-login/google-login.js"></script>
   <script src="js/login/facebook-login.js"></script>
 </html>
