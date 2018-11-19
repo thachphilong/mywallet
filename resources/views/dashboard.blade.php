@@ -6,7 +6,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="bootstrap/site/favicon.ico">
-
+    <meta name="google-signin-client_id" content="1064835903121-32gs3o00oq29fe6i3955jl9vb3p5t3rc.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>My Owls Nest's Wallet</title>
 
     <!-- Bootstrap core CSS -->
@@ -22,7 +23,16 @@
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
+          <a href="#" onclick="signOut();">Sign out</a>
+          <script>
+            function signOut() {
+              var auth2 = gapi.auth2.getAuthInstance();
+              auth2.signOut().then(function () {
+                console.log('User signed out.');
+                window.location.href = "http://localhost:8080/mywallet-master/public";
+              });
+            }
+          </script>
         </li>
       </ul>
     </nav>

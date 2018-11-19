@@ -16,4 +16,3 @@
         'onfailure': onFailure
       });
     }
-
