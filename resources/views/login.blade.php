@@ -8,6 +8,9 @@
     <meta name="google-signin-client_id" content="1064835903121-32gs3o00oq29fe6i3955jl9vb3p5t3rc.apps.googleusercontent.com">
     <link rel="icon" href="bootstrap/site/favicon.ico">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="js/login/google-login/google-data.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script scr="js/login/google-login/google-login.js"></script>
     <title>My Owls Nest's Wallet</title>
 
     <!-- Bootstrap core CSS -->
@@ -33,10 +36,8 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <br/>
       <div class="g-signin2" data-width="300" data-height="50" data-onsuccess="onSignIn" data-longtitle="true"></div>
+      <p id="data"></p>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
   </body>
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-  <script src="js/login/google-login/google-data.js"></script>
-  <script scr="js/login/google-login/google-login.js"></script>
 </html>

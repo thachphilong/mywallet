@@ -8,6 +8,8 @@
     <link rel="icon" href="bootstrap/site/favicon.ico">
     <meta name="google-signin-client_id" content="1064835903121-32gs3o00oq29fe6i3955jl9vb3p5t3rc.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script scr="js/login/google-login/google-login.js"></script>
     <title>My Owls Nest's Wallet</title>
 
     <!-- Bootstrap core CSS -->
@@ -21,18 +23,10 @@
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Owls Nest's Wallet</a>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <p id="data"></p>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a href="#" onclick="signOut();">Sign out</a>
-          <script>
-            function signOut() {
-              var auth2 = gapi.auth2.getAuthInstance();
-              auth2.signOut().then(function () {
-                console.log('User signed out.');
-                window.location.href = "http://localhost:8080/mywallet-master/public";
-              });
-            }
-          </script>
+        <a href="#">Sign out</a>
         </li>
       </ul>
     </nav>
