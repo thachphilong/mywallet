@@ -2,11 +2,14 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--icon-->
+    <link rel="icon" href="bootstrap/site/favicon.ico">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+     <!-- Bootstrap core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
