@@ -1,10 +1,11 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="{{asset('css/login/signin.css')}}">
 @section('content')
-<form class="form-signin" method="POST" action="{{ route('login')" }}>
+<!--form login-->
+<form class="form-signin" method="POST" action="{{ route('login')}}">
     @csrf
     <!--icon app-->
-      <img class="mb-4" src="" alt="" width="72" height="72">
+      <img class="mb-4" src="bootstrap/site/docs/4.1/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
     <!--label-->
       <h1 class="h3 mb-3 font-weight-normal">{{ __('Please Sign-in') }}</h1>
     <!--Username-->

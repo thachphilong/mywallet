@@ -7,8 +7,6 @@
     <link rel="icon" href="bootstrap/site/favicon.ico">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -28,7 +26,7 @@
     <script src="{{ asset('js/login/google-login/google-data.js') }}"></script>
     <script scr="{{asset('js/login/google-login/google-login.js')}}"></script>
 </head>
-<body>
+<body class="text-center">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
