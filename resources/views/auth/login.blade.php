@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -62,6 +61,7 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="g-signin2" data-width="300" data-height="50" data-onsuccess="onSignIn" data-longtitle="true"></div>
                     </form>
                 </div>
             </div>
