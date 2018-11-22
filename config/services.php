@@ -13,6 +13,11 @@ return [
     | to have a conventional place to find your various credentials.
     |
     */
+    'google' => [
+        'client_id' => env('1064835903121-32gs3o00oq29fe6i3955jl9vb3p5t3rc.apps.googleusercontent.com'),         // Your Google Client ID
+        'client_secret' => env('NQulRQRGvH7Iyt-EQWWdeZUM'), // Your Google Client Secret
+        'redirect' => 'http://localhost:8080/mywallet-master/public/home',
+    ],
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),

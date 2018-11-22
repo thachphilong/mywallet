@@ -27,3 +27,6 @@ Route::redirect('/','/mywallet-master/public/login');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//route for google login
+Route::get('login/google', 'Auth\LoginController@redirectToProvider');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
