@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect; 
 use Illuminate\Support\Facades\Session; 
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Hash;
 use Lavavel\User;
 class SocialAuthController extends Controller
 {
@@ -37,7 +38,7 @@ class SocialAuthController extends Controller
     {
         $user = Socialite::driver($provider)->user();
         $authUser = $this->findOrCreateUser($user, $provider);
-        Auth::login($authUser, true);
+        $user = Auth::login($authUser, true);
         return Redirect::to(Session::get('pre_url'));
     }
 
@@ -53,10 +54,11 @@ class SocialAuthController extends Controller
             return $authUser;
         }
         return User::create([
-            'name'     => $user->name,
-            'email'    => $user->email,
-            'provider' => $provider,
-            'provider_id' => $user->id
+            'name'          => $user->name,
+            'email'         => $user->email,
+            'password'      => Hash::make($user->id),
+            'provider'      => $provider,
+            'provider_id'   => $user->id
         ]);
     }
 }
