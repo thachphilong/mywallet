@@ -3,7 +3,6 @@
 namespace Lavavel\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Lavavel\Http\Requests;
 use Lavavel\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite; 
 use Illuminate\Support\Facades\Auth; 
@@ -37,7 +36,6 @@ class SocialAuthController extends Controller
     public function handleProviderCallback($provider)
     {
         $user = Socialite::driver($provider)->user();
-
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
         return Redirect::to(Session::get('pre_url'));

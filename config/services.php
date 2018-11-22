@@ -41,8 +41,8 @@ return [
     ],
     
     'google' => [
-        'client_id' => env('1064835903121-cbmkcf40o3em95g065crj87t0qnui3h3.apps.googleusercontent.com'), // Your Google Client ID
-        'client_secret' => env('ymcWTWSYwYNjzbHWDPY0VvEe'), // Your Google Client Secret
+        'client_id' => '1064835903121-cbmkcf40o3em95g065crj87t0qnui3h3.apps.googleusercontent.com', // Your Google Client ID
+        'client_secret' => 'ymcWTWSYwYNjzbHWDPY0VvEe', // Your Google Client Secret
         'redirect' => 'http://localhost:8080/mywallet-master/public/auth/google/callback',
     ],
 
