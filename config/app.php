@@ -167,11 +167,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Lavavel\Providers\AppServiceProvider::class,
+        Lavavel\Providers\AuthServiceProvider::class,
+        // Lavavel\Providers\BroadcastServiceProvider::class,
+        Lavavel\Providers\EventServiceProvider::class,
+        Lavavel\Providers\RouteServiceProvider::class,
 
     ],
 

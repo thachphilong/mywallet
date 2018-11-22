@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Lavavel\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
