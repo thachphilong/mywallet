@@ -5,6 +5,4 @@ function onSignIn(googleUser) {
     data_user.push('Name: ' + profile.getName());
     data_user.push('Image URL: ' + profile.getImageUrl());
     data_user.push('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-    document.getElementById('data').innerHTML = data_user[1];
-    window.location.href = "http://localhost:8080/mywallet-master/public/dashboard";
   }

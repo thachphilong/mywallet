@@ -34,6 +34,9 @@
     <!--google login-->
       <div class="g-signin2" data-width="300" data-height="50" data-onsuccess="onSignIn" data-longtitle="true"></div>
       <p id="data"></p>
+      <a class="btn btn-link" href="{{ URL::to('auth/google') }}">
+        <i class="fa fa-google-plus-square" aria-hidden="true"></i> Đăng nhập bằng Google
+      </a>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
 @endsection

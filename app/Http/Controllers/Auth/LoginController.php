@@ -19,7 +19,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-    use Socialite;
     use AuthenticatesUsers;
 
     /**
@@ -34,16 +33,6 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function redirectToProvider()
-    {
-        return Socialite::driver('google')->redirect();
-    }
-    public function handleProviderCallback()
-    {
-        $user = Socialite::driver('google')->user();
-
-        // $user->token;
-    }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
