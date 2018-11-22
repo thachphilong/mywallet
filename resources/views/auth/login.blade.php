@@ -32,8 +32,8 @@
         <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Login') }}</button>
         <a class="btn btn-link" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
     <!--google login-->
-      <div class="g-signin2" data-width="300" data-height="50" data-onsuccess="onSignIn" data-longtitle="true"></div>
-      <p id="data"></p>
+      <!--<div class="g-signin2" data-width="300" data-height="50" data-onsuccess="onSignIn" data-longtitle="true"></div>
+      <p id="data"></p>-->
       <a class="btn btn-link" href="{{ URL::to('auth/google') }}">
         <i class="fa fa-google-plus-square" aria-hidden="true"></i> Đăng nhập bằng Google
       </a>

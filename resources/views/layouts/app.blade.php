@@ -20,11 +20,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!--google log-in-->
-    <meta name="google-signin-client_id" content="1064835903121-32gs3o00oq29fe6i3955jl9vb3p5t3rc.apps.googleusercontent.com">
+    <!-- <meta name="google-signin-client_id" content="1064835903121-32gs3o00oq29fe6i3955jl9vb3p5t3rc.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <script src="{{ asset('js/login/google-login/google-data.js') }}"></script>
-    <script scr="{{asset('js/login/google-login/google-login.js')}}"></script>
+    <script scr="{{asset('js/login/google-login/google-login.js')}}"></script> -->
 </head>
 <body class="text-center">
     <div id="app">

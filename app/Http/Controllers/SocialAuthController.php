@@ -5,9 +5,12 @@ namespace Lavavel\Http\Controllers;
 use Illuminate\Http\Request;
 use Lavavel\Http\Requests;
 use Lavavel\Http\Controllers\Controller;
-use Socialite, Auth, Redirect, Session, URL;
+use Laravel\Socialite\Facades\Socialite; 
+use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Redirect; 
+use Illuminate\Support\Facades\Session; 
+use Illuminate\Support\Facades\URL;
 use Lavavel\User;
-
 class SocialAuthController extends Controller
 {
    /**
