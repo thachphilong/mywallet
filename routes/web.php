@@ -19,14 +19,11 @@ Route::get('/', function () {
 // Route::get('/login', function () {
 //     return view('login');
 // });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
 Route::redirect('/','/mywallet-master/public/login');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//route for google login
+//route for socialite login
 Route::get('/auth/{provider}', 'SocialAuthController@redirectToProvider');
 Route::get('/auth/{provide}/callback', 'SocialAuthController@handleProviderCallback');

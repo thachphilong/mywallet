@@ -35,14 +35,15 @@
         <button type="submit" class="btn btn-lg btn-primary btn-block">{{ __('Login') }}</button>
         <a class="btn btn-link" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
     <!--google login-->
-      <!--<div class="g-signin2" data-width="300" data-height="50" data-onsuccess="onSignIn" data-longtitle="true"></div>
-      <p id="data"></p>-->
+      <div class="g-signin2" data-width="300" data-height="50" data-onsuccess="onSignIn" data-longtitle="true"></div>
       <a class="btn btn-link" href="{{ URL::to('auth/google') }}">
         <i class="fa fa-google-plus-official" aria-hidden="true"></i> Đăng nhập bằng Google
       </a>
+    <!--facebook login -->
       <a class="btn btn-link" href="{{ URL::to('auth/facebook') }}">
         <i class="fa fa-facebook-official" aria-hidden="true"></i> Đăng nhập bằng Facebook
       </a>
+      <!--version-->
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
 @endsection

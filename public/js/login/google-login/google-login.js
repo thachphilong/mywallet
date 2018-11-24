@@ -1,6 +1,7 @@
 
     function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+      //console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+      window.alert('Logged in as: ' + googleUser.getBasicProfile().getName());
     }
     function onFailure(error) {
       console.log(error);

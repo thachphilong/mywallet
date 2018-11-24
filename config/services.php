@@ -41,13 +41,13 @@ return [
     ],
     
     'google' => [
-        'client_id' => '1064835903121-cbmkcf40o3em95g065crj87t0qnui3h3.apps.googleusercontent.com', // Your Google Client ID
+        'client_id'     => '1064835903121-cbmkcf40o3em95g065crj87t0qnui3h3.apps.googleusercontent.com', // Your Google Client ID
         'client_secret' => 'ymcWTWSYwYNjzbHWDPY0VvEe', // Your Google Client Secret
-        'redirect' => 'http://localhost:8080/mywallet-master/public/auth/google/callback',
+        'redirect'      => 'http://localhost:8080/mywallet-master/public/auth/google/callback',
     ],
     'facebook' => [
-        'client_id' => '1964754433589765',
+        'client_id'     => '1964754433589765',
         'client_secret' => 'b419b559b3ad69f01399c11c4c0c6aec',
-        'redirect' => 'http://localhost:8080/mywallet-master/public/auth/facebook/callback',
+        'redirect'      => 'http://localhost:8080/mywallet-master/public/auth/facebook/callback',
     ],
 ];
