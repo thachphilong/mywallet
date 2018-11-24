@@ -68,7 +68,8 @@ class RegisterController extends Controller
             'email'         => $data['email'],
             'password'      => Hash::make($data['password']),
             'provider'      => 'owls nest',
-            'provider_id'   => 'N/A'
+            'provider_id'   => '',
+            'avatar_url'    => 'http://localhost:8080/mywallet-master/public/pic/avatar/defaul_user_avatar.png',
         ]);
     }
 }

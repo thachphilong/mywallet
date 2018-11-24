@@ -40,6 +40,9 @@ class SocialAuthController extends Controller
         $authUser = $this->findOrCreateUser($user, $provider);
         $user = Auth::login($authUser, true);
         return Redirect::to(Session::get('pre_url'));
+        // echo "<pre>";
+        // print_r($user);
+        // echo "</pre>";
     }
 
     /**
@@ -58,7 +61,8 @@ class SocialAuthController extends Controller
             'email'         => $user->email,
             'password'      => Hash::make($user->id),
             'provider'      => $provider,
-            'provider_id'   => $user->id
+            'provider_id'   => $user->id,
+            'avatar_url'    => $user->avatar
         ]);
     }
 }
