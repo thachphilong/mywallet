@@ -1,5 +1,8 @@
 @extends('layouts.app')
 <link rel="stylesheet" href="{{asset('css/login/signin.css')}}">
+@section('link-header')
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+@endsection
 @section('content')
 <!--form login-->
 <form class="form-signin" method="POST" action="{{ route('login')}}">
@@ -35,10 +38,10 @@
       <!--<div class="g-signin2" data-width="300" data-height="50" data-onsuccess="onSignIn" data-longtitle="true"></div>
       <p id="data"></p>-->
       <a class="btn btn-link" href="{{ URL::to('auth/google') }}">
-        <i class="fa fa-google-plus-square" aria-hidden="true"></i> Đăng nhập bằng Google
+        <i class="fa fa-google-plus-official" aria-hidden="true"></i> Đăng nhập bằng Google
       </a>
       <a class="btn btn-link" href="{{ URL::to('auth/facebook') }}">
-        <i class="fa fa-google-plus-square" aria-hidden="true"></i> Đăng nhập bằng Facebook
+        <i class="fa fa-facebook-official" aria-hidden="true"></i> Đăng nhập bằng Facebook
       </a>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
