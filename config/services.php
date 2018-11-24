@@ -45,5 +45,9 @@ return [
         'client_secret' => 'ymcWTWSYwYNjzbHWDPY0VvEe', // Your Google Client Secret
         'redirect' => 'http://localhost:8080/mywallet-master/public/auth/google/callback',
     ],
-
+    'facebook' => [
+        'client_id' => '1964754433589765',
+        'client_secret' => 'b419b559b3ad69f01399c11c4c0c6aec',
+        'redirect' => 'http://localhost:8080/mywallet-master/public/auth/facebook/callback',
+    ],
 ];
