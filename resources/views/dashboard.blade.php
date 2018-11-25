@@ -1,35 +1,13 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="bootstrap/site/favicon.ico">
-    <meta name="google-signin-client_id" content="1064835903121-32gs3o00oq29fe6i3955jl9vb3p5t3rc.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-    <script scr="js/login/google-login/google-login.js"></script>
-    <title>My Owls Nest's Wallet</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/dashboard/dashboard.css" rel="stylesheet">
-  </head>
-
-  <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <!-- <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Owls Nest's Wallet</a>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-      <p id="data"></p>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-        <a href="#">Sign out</a>
+          <a href="#">Sign out</a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
 
     <div class="container-fluid">
       <div class="row">
@@ -271,5 +249,3 @@
     <!-- Graphs -->
     <script src="js/dashboard/Chart.min.js"></script>
     <script src="js/dashboard/line_chart.js"></script>
-  </body>
-</html>
