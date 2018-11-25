@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{asset('bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!--google log-in-->
     <!-- <meta name="google-signin-client_id" content="1064835903121-cbmkcf40o3em95g065crj87t0qnui3h3.apps.googleusercontent.com"> -->
     <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
