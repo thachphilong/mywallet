@@ -4,6 +4,7 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 @endsection
 @section('content')
+<div style="padding-top:50px">
 <!--form login-->
 <form class="form-signin" method="POST" action="{{ route('login')}}">
     @csrf
@@ -46,4 +47,5 @@
       <!--version-->
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
+</div>
 @endsection

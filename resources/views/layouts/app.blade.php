@@ -19,7 +19,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- <link href="{{ asset('css/dashboard/dashboard.css') }}" rel="stylesheet"> -->
     <!--google log-in-->
     <!-- <meta name="google-signin-client_id" content="1064835903121-cbmkcf40o3em95g065crj87t0qnui3h3.apps.googleusercontent.com"> -->
     <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
@@ -33,7 +32,7 @@
 <body>
 @endguest
     <div id="app">
-        <!-- <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top flex-md-nowrap p-10 shadow navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -43,14 +42,17 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    --><!-- Left Side Of Navbar --><!--
+                    <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        
                     </ul>
-
-                    --><!-- Right Side Of Navbar --><!--
+                    @guest
+                    @else
+                        <input class="form-control w-50 "type="text" placeholder="Search" aria-label="Search">
+                    @endguest
+                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        --><!-- Authentication Links --><!--
+                        <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -61,6 +63,9 @@
                                 @endif
                             </li>
                         @else
+                            <li class="nav-item">
+                                <img src="{{Auth::user()->avatar_url}}" width="50px" heigth="50px" class="rounded-circle" alt="">
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -82,41 +87,6 @@
                     </ul>
                 </div>
             </div>
-        </nav> -->
-        <nav class="navbar navbar-dark  bg-dark flex-md-nowrap p-0 shadow navbar-laravel">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
-            @guest
-            <ul class="navbar-nav px-3">
-                <li class="nav-item text-nowrap">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        @if (Route::has('register'))
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        @endif
-                    </li>
-            @else
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-            <ul class="navbar-nav px-10">
-                <li class="nav-item text-nowrap">
-                    <li class="nav-item">
-                        <a>{{ Auth::user()->name }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                             onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-        
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                @endguest
-                </li>
-            </ul>
         </nav>
         <main class="py-4">
             @yield('content')
