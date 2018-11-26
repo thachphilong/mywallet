@@ -1,6 +1,7 @@
 var ctx = document.getElementById("myChart");
+var type ="line";
       var myChart = new Chart(ctx, {
-        type: 'line',
+        type: type,
         data: {
           labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
           datasets: [

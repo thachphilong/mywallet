@@ -35,11 +35,11 @@
       <div style="text-align:justify">
     <!--google login-->
       <!-- <div class="g-signin2" data-width="300" data-height="50" data-onsuccess="onSignIn" data-longtitle="true"></div> -->
-      <a class="btn btn-link" href="{{ URL::to('auth/google') }}">
+      <a class="btn btn-success btn-block" href="{{ URL::to('auth/google') }}">
         <i data-feather="chrome" aria-hidden="true"></i> Đăng nhập bằng Google
       </a>
     <!--facebook login -->
-      <a class="btn btn-link" href="{{ URL::to('auth/facebook') }}">
+      <a class="btn btn-primary btn-block" href="{{ URL::to('auth/facebook') }}">
         <i data-feather="facebook" aria-hidden="true"></i> Đăng nhập bằng Facebook
       </a>
       </div>
@@ -47,9 +47,4 @@
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
 </form>
 </div>
-<!-- Icons -->
-<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-      feather.replace()
-    </script>
 @endsection
