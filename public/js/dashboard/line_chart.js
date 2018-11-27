@@ -1,6 +1,8 @@
 var ctx = document.getElementById("myChart");
+var x = document.getElementById('mySelect').selectedIndex;
+var type = document.getElementsByTagName('option')[x].value;
 var myChart = new Chart(ctx, {
-        type: 'bar',
+        type: type,
         data: {
           labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
           datasets: [

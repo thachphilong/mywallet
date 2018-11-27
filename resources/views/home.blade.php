@@ -102,18 +102,19 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
-                <button id="chart_style" class="btn btn-sm btn-outline-secondary" onclick="change_chart()">Line chart</button>
-                <script>
-                  function change_chart() {
-                     location.reload(myChart.config.type = 'line');
-                     console.log(myChart.config.type);
-                  }
-                </script>
-                <button id="chart_style" class="btn btn-sm btn-outline-secondary" value="bar">Bar chart</button>
-                <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
-              </button>
+                <div class="pr-3">
+                  <select class="custom-select custom-select-sm" id="mySelect" onchange="change_chart()">
+                    <option value="line">Line Chart</option>
+                    <option value="bar">Bar Chart</option>
+                  </select>  
+                </div>              
+                <script>function change_chart(){location.reload()}</script>
+                <div>
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                    <span data-feather="calendar"></span>
+                    This week
+                  </button>
+                </div>
             </div>
           </div>
           <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
