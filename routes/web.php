@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::redirect('/','/mywallet-master/public/login');
 
 Auth::routes();
-
+Route::get('userinfo','Auth\UserInfoController@info')->name('userinfo');
 Route::get('/home', 'HomeController@index')->name('home');
 //route for socialite login
 Route::get('/auth/{provider}', 'SocialAuthController@redirectToProvider');

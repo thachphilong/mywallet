@@ -106,6 +106,7 @@
                   <select class="custom-select custom-select-sm" id="mySelect" onchange="change_chart()">
                     <option value="line">Line Chart</option>
                     <option value="bar">Bar Chart</option>
+                    <option value="radar">Radar Chart</option>
                   </select>  
                 </div>              
                 <script>function change_chart(){location.reload()}</script>

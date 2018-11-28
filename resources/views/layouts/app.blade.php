@@ -82,7 +82,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
                                     <!--user info button-->
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{route('userinfo')}}">
                                         <span data-feather="info"></span> User info
                                     </a>
                                     <!--logout button-->
