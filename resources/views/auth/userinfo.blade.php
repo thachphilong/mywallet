@@ -72,7 +72,32 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
                             <div class="col-md-6">
-                              <img src="{{Auth::user()->avatar_url}}" class="img-thumbnail rounded" alt="">
+
+                            <img src="{{Auth::user()->avatar_url}}" id="avatar" class="img-thumbnail rounded" width="100px" height="100px" alt="">
+                              <!-- Button trigger modal -->
+                              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modelId">
+                                Launch
+                              </button>
+                              <!-- Modal -->
+                              <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h5 class="modal-title">Modal title/h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                          </div>
+                                          <div class="modal-body">
+                                              Body
+                                          </div>
+                                          <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary">Save</button>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
                             </div>
                         </div>
                         <div class="form-group row mb-0">

@@ -19,6 +19,6 @@ class UserInfoController extends Controller
     }
 
     public function info () {
-        return View('auth\userinfo');
+        return View('auth/userinfo');
     }
 }
