@@ -49,15 +49,15 @@
                                     <div class="modal-body">
                                      <div class="form-group">
                                        <label for="oldpassword">Old Password</label>
-                                       <input type="password" class="form-control" name="opassword" id="opassword" placeholder="Enter old password" require>
+                                       <input type="password" class="form-control" name="o_password" id="o_password" placeholder="Enter old password" require>
                                      </div>
                                      <div class="form-group">
                                        <label for="oldpassword">New Password</label>
-                                       <input type="password" class="form-control" name="npassword" id="npassword" placeholder="Enter new password" require>
+                                       <input type="password" class="form-control" name="n_password" id="n_password" placeholder="Enter new password" require>
                                      </div>
                                      <div class="form-group">
                                        <label for="oldpassword">Confirm New Password</label>
-                                       <input type="password" class="form-control" name="cnpassword" id="cnpassword" placeholder="Confirm new password" require>
+                                       <input type="password" class="form-control" name="cn_password" id="cn_password" placeholder="Confirm new password" require>
                                      </div>
                                     </div>
                                     <div class="modal-footer">
@@ -69,30 +69,33 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
                             <div class="col-md-6">
-
-                            <img src="{{Auth::user()->avatar_url}}" id="avatar" class="img-thumbnail rounded" width="100px" height="100px" alt="">
                               <!-- Button trigger modal -->
                               <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modelId">
-                                Launch
+                                <img src="{{Auth::user()->avatar_url}}" class="mx-auto d-block" id="avatar"  width="100px" height="100px" alt=""><br/>
+                                Change avatar
                               </button>
                               <!-- Modal -->
                               <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                           <div class="modal-header">
-                                              <h5 class="modal-title">Modal title/h5>
+                                              <h5 class="modal-title">Change your's avartar</h5>
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                       <span aria-hidden="true">&times;</span>
                                                   </button>
                                           </div>
                                           <div class="modal-body">
-                                              Body
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="n_avatar">Place your's avarta here</label>
+                                                    <input type="file" class="form-control-file" id="n_avatar">
+                                                </div>
+                                            </form>
                                           </div>
                                           <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                               <button type="button" class="btn btn-primary">Save</button>
                                           </div>
                                       </div>

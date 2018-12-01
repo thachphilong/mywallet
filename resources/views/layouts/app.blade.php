@@ -52,7 +52,11 @@
                     </ul>
                     @guest
                     @else
-                    <input class="form-control w-50 "type="text" placeholder="Search" aria-label="Search">
+                        @if (Route::is('home'))
+                        <input class="form-control w-50 "type="text" placeholder="Search" aria-label="Search">   
+                        @else
+
+                        @endif
                     @endguest
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -67,7 +71,7 @@
                             <li class="nav-item">
                                 @if (Route::has('register'))
                                     <a class="nav-link" href="{{ route('register') }}">
-                                        <span data-feather="users"></span>
+                                        <span data-feather="user-plus"></span>
                                         {{ __('Register') }}
                                     </a>
                                 @endif
