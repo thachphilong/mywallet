@@ -66,7 +66,23 @@
                                      </div>
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="submit" class="btn btn-primary">{{__('Save changes')}}</button>
+                                      <button type="button" onclick="submit_data()" class="btn btn-primary">{{__('Save changes')}}</button>
+                                      <script>
+                                          function submit_data(){
+                                            var n_password = document.getElementById('n_password').value;
+                                            var cn_password = document.getElementById('cn_password').value;
+                                            var xmlhttp = new XMLHttpRequest();
+                                            xmlhttp.onreadystatechange = function() {
+                                                if (this.readyState == 4 && this.status == 200) {
+                                                    var n_password = document.getElementById('n_password').value;
+                                                    var cn_password = document.getElementById('cn_password').value;
+                                                }
+                                            };
+                                            xmlhttp.open("get", "{{asset('userinfo')}}" + "?n_password=" + n_password + "&cn_password=" + cn_password, true);
+                                            xmlhttp.setRequestHeader('X-CSRF-Token' , '{{csrf_token()}}' )
+                                            xmlhttp.send();
+                                          }
+                                      </script>
                                     </div>
                                     </form>
                                   </div>
