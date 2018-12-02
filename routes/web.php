@@ -20,10 +20,14 @@ Route::get('/', function () {
 //     return view('login');
 // });
 Route::redirect('/','/mywallet-master/public/login');
-
 Auth::routes();
 Route::get('/userinfo','Auth\UserInfoController@info')->name('userinfo');
 Route::get('/home', 'HomeController@index')->name('home');
+//route group userinformation
+Route::group(['prefix' => 'userinfo'],function(){
+    Route::get('/userinfo','Auth\UserInfoController@info')->name('userinfo');
+    Route::post('/userinfo','Auth\UserInfoController@change_password');
+});
 //route for socialite login
 Route::get('/auth/{provider}', 'SocialAuthController@redirectToProvider');
 Route::get('/auth/{provide}/callback', 'SocialAuthController@handleProviderCallback');

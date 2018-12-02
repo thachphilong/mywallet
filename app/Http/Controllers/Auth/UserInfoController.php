@@ -8,6 +8,8 @@ use Lavavel\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+//use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserInfoController extends Controller
 {
@@ -19,34 +21,17 @@ class UserInfoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'o_password' => ['required', 'string', 'min:6', 'confirmed'],
-            'n_password' => ['required', 'string', 'min:6', 'confirmed'],
-            'cn_password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
-    }
-    /**
-     *
-     *
-     * @param  array  $data
-     * @return \Lavavel\User
-     */
-    protected function update(array $data)
-    {
-        return User::where('active', 1)
-                    ->where('destination', 'San Diego')
-                    ->update(['delayed' => 1]);
-    }
-    public function info () {
+    } 
+    public function info() {
         return View('auth/userinfo');
+    }
+    public function change_password(Request $request)
+    {
+        $this ->validate($request,[
+            'n_password'    => ['required', 'string', 'min:6', 'confirmed'],
+            'cn_password'   => ['required', 'string', 'min:6', 'confirmed','same:password'],
+        ]);
+        print_r($this);
+        //DB::where('email', '$data["email"]') -> update(['password' => Hash::make($data['n_password'])]);
     }
 }

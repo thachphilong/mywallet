@@ -8,9 +8,6 @@
                 <div class="card-header">{{ __('User Infomation') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -33,7 +30,7 @@
                             <div class="col-md-6">
                             <!-- Button trigger modal -->
                               <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                Change Password
+                               {{__('Change Password')}} 
                               </button>
 
                               <!-- Modal -->
@@ -41,28 +38,37 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalCenterTitle">Change Password</h5>
+                                      <h5 class="modal-title" id="exampleModalCenterTitle">{{__('Change Password')}}</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
+                                    <form method="POST" action="{{Route('userinfo')}}" >
+                                            @csrf
                                     <div class="modal-body">
                                      <div class="form-group">
-                                       <label for="oldpassword">Old Password</label>
-                                       <input type="password" class="form-control" name="o_password" id="o_password" placeholder="Enter old password" require>
+                                     <label for="n_password">{{__('New Password')}}</label>
+                                     <input type="password" class="form-control{{ $errors->has('n_password') ? ' is-invalid' : '' }}" name="n_password" id="n_password" placeholder="Enter new password" require>
+                                       @if ($errors->has('n_password'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('n_password') }}</strong>
+                                            </span>
+                                        @endif
                                      </div>
                                      <div class="form-group">
-                                       <label for="oldpassword">New Password</label>
-                                       <input type="password" class="form-control" name="n_password" id="n_password" placeholder="Enter new password" require>
-                                     </div>
-                                     <div class="form-group">
-                                       <label for="oldpassword">Confirm New Password</label>
-                                       <input type="password" class="form-control" name="cn_password" id="cn_password" placeholder="Confirm new password" require>
+                                     <label for="cn_password">{{__('Confirm New Password')}}</label>
+                                     <input type="password" class="form-control{{ $errors->has('cn_password') ? ' is-invalid' : '' }}" name="cn_password" id="cn_password" placeholder="Confirm new password" require>
+                                       @if ($errors->has('cn_password'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('cn_password') }}</strong>
+                                            </span>
+                                        @endif
                                      </div>
                                     </div>
                                     <div class="modal-footer">
-                                      <button type="button" class="btn btn-primary">Save changes</button>
+                                      <button type="submit" class="btn btn-primary">{{__('Save changes')}}</button>
                                     </div>
+                                    </form>
                                   </div>
                                 </div>
                               </div>
@@ -108,7 +114,6 @@
                                 <a class="btn btn-outline-primary float-right" href="{{route('home')}}" role="button">Back</a>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
