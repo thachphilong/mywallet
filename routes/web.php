@@ -21,7 +21,7 @@ Route::get('/', function () {
 // });
 Route::redirect('/','/mywallet-master/public/login');
 Auth::routes();
-Route::get('/userinfo','Auth\UserInfoController@info')->name('userinfo');
+Route::post('/userinfo','Auth\UserInfoController@info')->name('userinfo');
 Route::get('/home', 'HomeController@index')->name('home');
 //route group userinformation
 Route::group(['prefix' => 'userinfo'],function(){
