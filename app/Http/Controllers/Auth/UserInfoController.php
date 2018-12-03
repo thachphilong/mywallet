@@ -34,13 +34,13 @@ class UserInfoController extends Controller
         if ($this->fails()) {
 
             // get the error messages from the validator
-                $messages = $validator->messages();
+                $messages = $this->messages();
     
             // redirect our user back to the form with the errors from the validator
-                $input = Input::except('password', 'password_confirm'); //Get all the old input except password.
-                $input['autoOpenModal'] = 'true'; //Add the auto open indicator flag as an input.
+                $input = Request::except('n_password', 'cn_password'); //Get all the old input except password.
+                $input['password_modal'] = 'true'; //Add the auto open indicator flag as an input.
                 return Redirect::back()
-                ->withErrors($validator)
+                ->withErrors($this)
                 ->withInput($input);
         }
         //DB::where('email', '$data["email"]') -> update(['password' => Hash::make($data['n_password'])]);

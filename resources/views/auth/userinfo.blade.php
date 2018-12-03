@@ -85,9 +85,10 @@
                                     </div>
                                     </form>
                                     <script type="text/javascript">
-                                        if ({{ Input::old('autoOpenModal', 'false') }}) {
+                                        if ({{ Request::old('password_modal', 'true') }}) 
+                                        {
                                             //JavaScript code that open up your modal.
-                                            $('#passwordModal').modal('show');
+                                            $('#password_modal').modal('show');
                                         }
                                     </script>
                                   </div>
