@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container" style="padding-top:50px">
     <div class="row justify-content-center">
@@ -29,16 +28,15 @@
 
                             <div class="col-md-6">
                             <!-- Button trigger modal -->
-                              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#password_modal">
                                {{__('Change Password')}} 
                               </button>
-
                               <!-- Modal -->
-                              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal fade hide" id="password_modal" tabindex="-1" role="dialog" aria-labelledby="password_modalTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalCenterTitle">{{__('Change Password')}}</h5>
+                                      <h5 class="modal-title" id="password_modalTitle">{{__('Change Password')}}</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                       </button>
@@ -72,16 +70,26 @@
                                           {
                                             var n_pass = document.getElementById('n_password').value;
                                             var cn_pass = document.getElementById('cn_password').value;
-                                            var data = ('n_password='+n_pass+'&cn_password='+cn_pass);
+                                            //var data = ('n_password='+n_pass+'&cn_password='+cn_pass);
+                                            var data = new FormData();
+                                            data.append('n_password',n_pass);
+                                            data.append('cn_password',cn_pass);
                                             var xmlhttp = new XMLHttpRequest();
                                             xmlhttp.open("post", "{{asset('userinfo')}}", true);
+                                            xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                                             xmlhttp.setRequestHeader('X-CSRF-Token' , '{{csrf_token()}}');
-                                            xmlhttp.send('data');
+                                            xmlhttp.send(data);
                                             console.log(xmlhttp);
                                           }
                                       </script> -->
                                     </div>
                                     </form>
+                                    <script type="text/javascript">
+                                        if ({{ Input::old('autoOpenModal', 'false') }}) {
+                                            //JavaScript code that open up your modal.
+                                            $('#passwordModal').modal('show');
+                                        }
+                                    </script>
                                   </div>
                                 </div>
                               </div>

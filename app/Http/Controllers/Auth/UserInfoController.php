@@ -31,7 +31,18 @@ class UserInfoController extends Controller
             'n_password'    => ['required', 'string', 'min:6', 'confirmed'],
             'cn_password'   => ['required', 'string', 'min:6', 'confirmed','same:password'],
         ]);
-        print_r($this);
+        if ($this->fails()) {
+
+            // get the error messages from the validator
+                $messages = $validator->messages();
+    
+            // redirect our user back to the form with the errors from the validator
+                $input = Input::except('password', 'password_confirm'); //Get all the old input except password.
+                $input['autoOpenModal'] = 'true'; //Add the auto open indicator flag as an input.
+                return Redirect::back()
+                ->withErrors($validator)
+                ->withInput($input);
+        }
         //DB::where('email', '$data["email"]') -> update(['password' => Hash::make($data['n_password'])]);
     }
 }
