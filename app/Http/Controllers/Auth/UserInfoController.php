@@ -26,11 +26,18 @@ class UserInfoController extends Controller
     }
     public function change_password(Request $request)
     {
-        $validate = Validator::make($request->all(),[
+        $messages = [
+            'n_password.required' => 'The new password field is required.',
+            'cn_password.required' => 'The confirm new password field is required.',
+            // 'n_password.string' => 'The new password field is required.',
+            // 'cn_password.string' => 'The confirm new password field is required.'
+        ];
+        $rule = [
             'email'         => 'email',
             'n_password'    => 'required|string|min:6',
             'cn_password'   => 'required|string|min:6|same:n_password'
-        ]);
+        ];
+        $validate = Validator::make($request->all(),$rule,$messages);
         if ($validate->fails()) 
         {
             // get the error messages from the validator
