@@ -8,7 +8,6 @@ use Lavavel\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-//use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserInfoController extends Controller
@@ -27,21 +26,33 @@ class UserInfoController extends Controller
     }
     public function change_password(Request $request)
     {
-        $this ->validate($request,[
-            'n_password'    => ['required', 'string', 'min:6', 'confirmed'],
-            'cn_password'   => ['required', 'string', 'min:6', 'confirmed','same:password'],
+        $validate = Validator::make($request->all(),[
+            'email'         => 'email',
+            'n_password'    => 'required|string|min:6',
+            'cn_password'   => 'required|string|min:6|same:n_password'
         ]);
-        if ($this->fails()) {
-
+        if ($validate->fails()) 
+        {
             // get the error messages from the validator
-                $messages = $this->messages();
-    
+                $messages = $validate->messages();
             // redirect our user back to the form with the errors from the validator
-                $input = Request::except('n_password', 'cn_password'); //Get all the old input except password.
+                $input = $request->except('n_password', 'cn_password');
                 $input['password_modal'] = 'true'; //Add the auto open indicator flag as an input.
-                return Redirect::back()
-                ->withErrors($this)
+                return redirect('userinfo/userinfo')
+                    ->withErrors($validate)
+                    ->withInput($input);
+        }
+        else
+        {
+            $input['password_modal'] = 'false';
+            $input['change_success'] = 'true';
+            User::where('email', $request['email'])
+                        ->update([
+                            'password' => Hash::make($request['n_password'])
+                        ]);
+            return redirect('userinfo/userinfo')
                 ->withInput($input);
+            
         }
         //DB::where('email', '$data["email"]') -> update(['password' => Hash::make($data['n_password'])]);
     }

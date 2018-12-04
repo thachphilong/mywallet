@@ -26,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //route group userinformation
 Route::group(['prefix' => 'userinfo'],function(){
     Route::get('/userinfo','Auth\UserInfoController@info')->name('userinfo');
-    Route::post('/userinfo','Auth\UserInfoController@change_password');
+    Route::post('/userinfo','Auth\UserInfoController@change_password')->name('change_password');
 });
 //route for socialite login
 Route::get('/auth/{provider}', 'SocialAuthController@redirectToProvider');

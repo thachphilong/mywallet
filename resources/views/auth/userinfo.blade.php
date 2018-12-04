@@ -43,6 +43,7 @@
                                     </div>
                                     <form method="POST" action="{{Route('userinfo')}}" >
                                             @csrf
+                                    <input id="email" type="hidden" name="email" value="{{Auth::user()->email }}">
                                     <div class="modal-body">
                                      <div class="form-group">
                                      <label for="n_password">{{__('New Password')}}</label>
@@ -65,23 +66,6 @@
                                     </div>
                                     <div class="modal-footer">
                                       <button type="submit" class="btn btn-primary">{{__('Save changes')}}</button>
-                                      <!-- <script>
-                                          function submit_data()
-                                          {
-                                            var n_pass = document.getElementById('n_password').value;
-                                            var cn_pass = document.getElementById('cn_password').value;
-                                            //var data = ('n_password='+n_pass+'&cn_password='+cn_pass);
-                                            var data = new FormData();
-                                            data.append('n_password',n_pass);
-                                            data.append('cn_password',cn_pass);
-                                            var xmlhttp = new XMLHttpRequest();
-                                            xmlhttp.open("post", "{{asset('userinfo')}}", true);
-                                            xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                                            xmlhttp.setRequestHeader('X-CSRF-Token' , '{{csrf_token()}}');
-                                            xmlhttp.send(data);
-                                            console.log(xmlhttp);
-                                          }
-                                      </script> -->
                                     </div>
                                     </form>
                                     <script type="text/javascript">
@@ -89,6 +73,10 @@
                                         {
                                             //JavaScript code that open up your modal.
                                             $('#password_modal').modal('show');
+                                        }
+                                        else
+                                        {
+                                            console.log('success validate')
                                         }
                                     </script>
                                   </div>
