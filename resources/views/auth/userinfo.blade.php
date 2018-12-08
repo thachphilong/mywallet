@@ -71,12 +71,11 @@
                                     <script type="text/javascript">
                                         if ({{ Request::old('password_modal', 'true') }}) 
                                         {
-                                            //JavaScript code that open up your modal.
                                             $('#password_modal').modal('show');
                                         }
                                         else
                                         {
-                                            console.log('success validate')
+                                            $('#password_modal').modal('hide');
                                         }
                                     </script>
                                   </div>
@@ -121,7 +120,7 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <a class="btn btn-outline-primary float-right" href="{{route('home')}}" role="button">Back</a>
+                                <a class="btn btn-outline-danger float-right" href="{{route('home')}}" role="button">Back</a>
                             </div>
                         </div>
                 </div>

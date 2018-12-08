@@ -27,15 +27,17 @@ class UserInfoController extends Controller
     public function change_password(Request $request)
     {
         $messages = [
-            'n_password.required' => 'The new password field is required.',
-            'cn_password.required' => 'The confirm new password field is required.',
-            // 'n_password.string' => 'The new password field is required.',
-            // 'cn_password.string' => 'The confirm new password field is required.'
+            'n_password.required'   => 'The new password field is required.',
+            'cn_password.required'  => 'The confirm new password field is required.',
+            'n_password.min'        => 'The new password field must be at least 6 characters.',
+            'n_password.max'        => 'The new password may not be greater than 16 characters',
+            'n_password.regex'      => 'The new password field must be have \'[a-z],[A-Z],[0-9],[~!@#$%^&*]\' characters.',
+            'cn_password.same'      => 'The confirm new password and new password must match.'
         ];
         $rule = [
             'email'         => 'email',
-            'n_password'    => 'required|string|min:6',
-            'cn_password'   => 'required|string|min:6|same:n_password'
+            'n_password'    => 'required|string|min:6|max:16|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/',
+            'cn_password'   => 'required|string|same:n_password'
         ];
         $validate = Validator::make($request->all(),$rule,$messages);
         if ($validate->fails()) 
@@ -44,9 +46,9 @@ class UserInfoController extends Controller
                 $messages = $validate->messages();
             // redirect our user back to the form with the errors from the validator
                 $input = $request->except('n_password', 'cn_password');
-                $input['password_modal'] = 'true'; //Add the auto open indicator flag as an input.
+                $input['password_modal'] = 'true';
                 return redirect('userinfo/userinfo')
-                    ->withErrors($validate)
+                    ->withErrors($messages)
                     ->withInput($input);
         }
         else
@@ -58,9 +60,8 @@ class UserInfoController extends Controller
                             'password' => Hash::make($request['n_password'])
                         ]);
             return redirect('userinfo/userinfo')
-                ->withInput($input);
+                ->with($input);
             
         }
-        //DB::where('email', '$data["email"]') -> update(['password' => Hash::make($data['n_password'])]);
     }
 }
