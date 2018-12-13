@@ -41,7 +41,7 @@
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
-                                    <form method="POST" action="{{Route('userinfo')}}" >
+                                    <form method="POST" action="{{Route('password')}}" >
                                             @csrf
                                     <input id="email" type="hidden" name="email" value="{{Auth::user()->email }}">
                                     <div class="modal-body">
@@ -68,21 +68,41 @@
                                       <button type="submit" class="btn btn-primary">{{__('Save changes')}}</button>
                                     </div>
                                     </form>
-                                    <script type="text/javascript">
-                                        if ({{ Request::old('password_modal', 'true') }}) 
-                                        {
-                                            $('#password_modal').modal('show');
-                                        }
-                                        else
-                                        {
-                                            $('#password_modal').modal('hide');
-                                        }
-                                    </script>
                                   </div>
                                 </div>
                               </div>
                             </div>
                         </div>
+                        <!-- Modal -->
+                        <div class="modal fade"  id="change_status" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">{{__('Password Change')}}
+                                    </div>
+                                    <div class="modal-body">
+                                        {{__('Your password\' changed complete. Please press close to logout.')}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" onclick="document.getElementById('logout-form').submit();">{{__('Close')}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                                        if ({{ Request::old('password_modal','0')}} == 1) 
+                                        {
+                                            $('#password_modal').modal('show');
+                                        }
+                                        if ({{Request::old('change_status','0')}} != 1)
+                                        {$('#change_status').modal('hide');}
+                                        else
+                                        {$('#change_status').modal({
+                                            show     : true,
+                                            backdrop : 'static',
+                                            keyboard : false
+                                        });}
+                                    </script>
                         <div class="form-group row">
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
@@ -90,29 +110,36 @@
                               <!-- Button trigger modal -->
                               <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modelId">
                                 <img src="{{Auth::user()->avatar_url}}" class="mx-auto d-block" id="avatar"  width="100px" height="100px" alt=""><br/>
-                                Change avatar
+                                {{__('Change avatar')}}
                               </button>
                               <!-- Modal -->
                               <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                           <div class="modal-header">
-                                              <h5 class="modal-title">Change your's avartar</h5>
+                                              <h5 class="modal-title">{{__('Change your\'s avartar')}}</h5>
                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                       <span aria-hidden="true">&times;</span>
                                                   </button>
                                           </div>
+                                        <form method="post" action="{{ Route('avatar') }}">
+                                            <input id="email" type="hidden" name="email" value="{{Auth::user()->email }}">
+                                            @csrf
                                           <div class="modal-body">
-                                            <form>
                                                 <div class="form-group">
-                                                    <label for="n_avatar">Place your's avarta here</label>
-                                                    <input type="file" class="form-control-file" id="n_avatar">
+                                                    <label for="n_avatar">{{__('Place your\'s avarta here')}}</label>
+                                                    <input type="file" class="form-control-file {{ $errors->has('n_avatar') ? ' is-invalid' : '' }}" name="n_avatar" id="n_avatar" require>
+                                                    @if ($errors->has('n_avatar'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('n_avatar') }}</strong>
+                                                        </span>
+                                                    @endif
                                                 </div>
-                                            </form>
                                           </div>
                                           <div class="modal-footer">
-                                              <button type="button" class="btn btn-primary">Save</button>
+                                              <button type="submit" class="btn btn-primary">{{__('Save change')}}</button>
                                           </div>
+                                        </form>
                                       </div>
                                   </div>
                               </div>

@@ -21,13 +21,18 @@ Route::get('/', function () {
 // });
 Route::redirect('/','/mywallet-master/public/login');
 Auth::routes();
-Route::post('/userinfo','Auth\UserInfoController@info')->name('userinfo');
 Route::get('/home', 'HomeController@index')->name('home');
 //route group userinformation
 Route::group(['prefix' => 'userinfo'],function(){
-    Route::get('/userinfo','Auth\UserInfoController@info')->name('userinfo');
-    Route::post('/userinfo','Auth\UserInfoController@change_password')->name('change_password');
+    Route::get('/edit','Auth\UserInfoController@info') -> name('edit');
+    //route change password form
+    Route::get('/edit_password','Auth\UserInfoController@info')->name('password');
+    Route::post('/edit_password','Auth\UserInfoController@change_password')->name('password');
+    //route change avatar form
+    Route::get('/edit_avatar','Auth\UserInfoController@info')->name('avatar');
+    Route::post('/edit_avatar','Auth\UserInfoController@change_avatar')->name('avatar');
 });
+// Route::post('/userinfo','Auth\UserInfoController@change_password');
 //route for socialite login
 Route::get('/auth/{provider}', 'SocialAuthController@redirectToProvider');
 Route::get('/auth/{provide}/callback', 'SocialAuthController@handleProviderCallback');

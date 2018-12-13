@@ -86,8 +86,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
                                     <!--user info button-->
-                                    <a class="dropdown-item" href="{{route('userinfo')}}">
-                                        <span data-feather="info"></span> User info
+                                    <a class="dropdown-item" href="{{route('edit')}}">
+                                        <span data-feather="info"></span> {{__('User Information')}}
                                     </a>
                                     <!--logout button-->
                                     <a class="dropdown-item" href="{{ route('logout') }}"

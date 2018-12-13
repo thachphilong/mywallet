@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+Use Illuminate\Support\Facades\Input;
 
 class UserInfoController extends Controller
 {
@@ -45,23 +46,37 @@ class UserInfoController extends Controller
             // get the error messages from the validator
                 $messages = $validate->messages();
             // redirect our user back to the form with the errors from the validator
-                $input = $request->except('n_password', 'cn_password');
-                $input['password_modal'] = 'true';
-                return redirect('userinfo/userinfo')
-                    ->withErrors($messages)
-                    ->withInput($input);
+                $input['password_modal'] = true;
+                return redirect()->back()
+                ->withErrors($validate)
+                ->withInput($input);
         }
         else
         {
-            $input['password_modal'] = 'false';
-            $input['change_success'] = 'true';
+            $input['change_status'] = true;
             User::where('email', $request['email'])
                         ->update([
                             'password' => Hash::make($request['n_password'])
                         ]);
-            return redirect('userinfo/userinfo')
-                ->with($input);
+            return redirect() -> back()
+                ->withInput($input);
             
+        }
+    }
+    public function change_avatar(Request $request) 
+    {
+        $rule = 
+        [
+            'email'     => 'email',
+            'n_avatar'  => 'required|image|dimensions:max_width=300,max_height=300'
+        ];
+        $validate = Validator::make($request->all(),$rule);
+        if ($validate -> fails())
+        {
+            $messages = $validate -> messages();
+            return redirect()->back()
+            ->withErrors($messages)
+            ->withInput();
         }
     }
 }
