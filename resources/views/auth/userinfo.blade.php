@@ -90,30 +90,30 @@
                             </div>
                         </div>
                         <script type="text/javascript">
-                                        if ({{ Request::old('password_modal','0')}} == 1) 
-                                        {
-                                            $('#password_modal').modal('show');
-                                        }
-                                        if ({{Request::old('change_status','0')}} != 1)
-                                        {$('#change_status').modal('hide');}
-                                        else
-                                        {$('#change_status').modal({
-                                            show     : true,
-                                            backdrop : 'static',
-                                            keyboard : false
-                                        });}
-                                    </script>
+                            if ({{ Request::old('password_modal','0')}} == 1) 
+                            {
+                                $('#password_modal').modal('show');
+                            }
+                            if ({{Request::old('change_status','0')}} != 1)
+                                {$('#change_status').modal('hide');}
+                            else
+                                {$('#change_status').modal({
+                                    show     : true,
+                                    backdrop : 'static',
+                                    keyboard : false
+                                });}
+                        </script>
                         <div class="form-group row">
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
 
                             <div class="col-md-6">
                               <!-- Button trigger modal -->
-                              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modelId">
+                              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#avatar_modal">
                                 <img src="{{Auth::user()->avatar_url}}" class="mx-auto d-block" id="avatar"  width="100px" height="100px" alt=""><br/>
                                 {{__('Change avatar')}}
                               </button>
                               <!-- Modal -->
-                              <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                              <div class="modal fade" id="avatar_modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
                                           <div class="modal-header">
@@ -122,12 +122,12 @@
                                                       <span aria-hidden="true">&times;</span>
                                                   </button>
                                           </div>
-                                        <form method="post" action="{{ Route('avatar') }}">
+                                        <form method="POST" action="{{ Route('avatar') }}" enctype="multipart/form-data">
                                             <input id="email" type="hidden" name="email" value="{{Auth::user()->email }}">
                                             @csrf
                                           <div class="modal-body">
                                                 <div class="form-group">
-                                                    <label for="n_avatar">{{__('Place your\'s avarta here')}}</label>
+                                                    <label for="n_avatar">{{__('Place your\'s avatar here')}}</label>
                                                     <input type="file" class="form-control-file {{ $errors->has('n_avatar') ? ' is-invalid' : '' }}" name="n_avatar" id="n_avatar" require>
                                                     @if ($errors->has('n_avatar'))
                                                         <span class="invalid-feedback" role="alert">
@@ -140,6 +140,20 @@
                                               <button type="submit" class="btn btn-primary">{{__('Save change')}}</button>
                                           </div>
                                         </form>
+                                        <script type="text/javascript">
+                                            if ({{ Request::old('avatar_modal','0')}} == 1) 
+                                            {
+                                                $('#avatar_modal').modal('show');
+                                            }
+                                            // if ({{Request::old('change_status','0')}} != 1)
+                                            // {$('#change_status').modal('hide');}
+                                            // else
+                                            // {$('#change_status').modal({
+                                            //     show     : true,
+                                            //     backdrop : 'static',
+                                            //     keyboard : false
+                                            // });}
+                                        </script>
                                       </div>
                                   </div>
                               </div>

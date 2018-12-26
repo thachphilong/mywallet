@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 Use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 class UserInfoController extends Controller
 {
@@ -65,18 +66,36 @@ class UserInfoController extends Controller
     }
     public function change_avatar(Request $request) 
     {
+        $avatar = $request -> all();
         $rule = 
         [
             'email'     => 'email',
-            'n_avatar'  => 'required|image|dimensions:max_width=300,max_height=300'
+            'n_avatar'  => 'required|image|mimes:jpeg,png,jpg|dimensions:ratio=5/5'
         ];
-        $validate = Validator::make($request->all(),$rule);
+        $messages =
+        [
+            'n_avatar.required'     => 'The new avatar field is required.',
+            'n_avatar.image'        => 'The new avatar field must be an image.',
+            'n_avatar.mimes'        => 'The new avatar field must be use extension jpeg, png, bmp, gif, or svg.',
+            'n_avatar.dimensions'   => 'The new avatar dimension must be ratio 5:5'
+        ];
+        $validate = Validator::make($avatar,$rule,$messages);
         if ($validate -> fails())
         {
             $messages = $validate -> messages();
+            $input['avatar_modal'] = true;
             return redirect()->back()
-            ->withErrors($messages)
-            ->withInput();
+            ->withErrors($validate)
+            ->withInput($input);
+        }
+        else
+        {
+            $path = $request -> file('n_avatar') -> store('avatar/'.Hash::make($request['email']),'public');
+            User::where('email', $request['email'])
+               ->update([
+                   'avatar_url' => 'http://localhost:8080/mywallet-master/storage/app/public/'.$path 
+               ]);
+            return redirect('home');
         }
     }
 }
