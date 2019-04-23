@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 Use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class UserInfoController extends Controller
 {
@@ -90,12 +91,37 @@ class UserInfoController extends Controller
         }
         else
         {
-            $path = $request -> file('n_avatar') -> store('avatar/'.Hash::make($request['email']),'public');
-            User::where('email', $request['email'])
-               ->update([
-                   'avatar_url' => 'http://localhost:8080/mywallet-master/storage/app/public/'.$path 
-               ]);
-            return redirect('home');
+            if (Auth::user() -> avatar_url == "")
+            {
+                $path = $request -> file('n_avatar') -> store('avatar/'.Hash::make($request['email']),'public');
+                User::where('email', $request['email'])
+                    ->update([
+                        'avatar_url' => 'http://localhost:8080/mywallet-master/storage/app/public/'.$path 
+                    ]);
+                return redirect('home');
+            } 
+            else 
+            {
+                $path = '/Applications/XAMPP/xamppfiles/htdocs/mywallet-master/storage/app/public/avatar/'.Hash::make(Auth::user() -> email);
+                if (file_exists($path))
+                {
+                    echo 'has file';
+                    echo "</br>";
+                    Storage::deleteDirectory($path);
+                }
+                else {
+                    echo 'file is not exits';
+                    echo "</br>";
+                    echo $path;
+                }
+                // Storage::deleteDirectory($path);
+                // $path = $request -> file('n_avatar') -> store('avatar/'.Hash::make($request['email']),'public');
+                // User::where('email', $request['email'])
+                //     ->update([
+                //         'avatar_url' => 'http://localhost:8080/mywallet-master/storage/app/public/'.$path 
+                //     ]);
+                // return redirect('home');
+            }
         }
     }
 }
